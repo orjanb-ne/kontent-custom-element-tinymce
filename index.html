@@ -66,13 +66,6 @@
         editor = tinymce.init({
           selector: "#editor",
           height: config.heightInPx,
-          plugins: [
-            "charmap anchor",
-            "searchreplace",
-            "insertdatetime table paste wordcount help"
-          ],
-          toolbar:
-            "undo redo | italic | removeformat | help",
           tinycomments_mode: "embedded",
           setup: function(editor) {
             // updates Kentico Cloud element value on certain actions
