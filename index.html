@@ -41,10 +41,6 @@
 
     <!-- Custom element code -->
     <script type="text/javascript">
-      var config = {
-        heightInPx: 500
-      };
-
       var isDisabled = false;
       var editor = null;
 
@@ -59,7 +55,7 @@
         isDisabled = disabled;
       }
 
-      function initializeEditor(initialValue, isDisabled) {
+      function initializeEditor(initialValue, isDisabled, config = {}) {
         document.getElementById("editor").value = initialValue;
 
         // Setup SimpleMDE
