@@ -1,0 +1,10 @@
+# OS X
+.DS_Store
+
+# Stuff
+/node/
+build/
+npm-debug.log
+**/dist/
+node_modules/
+bower_components/

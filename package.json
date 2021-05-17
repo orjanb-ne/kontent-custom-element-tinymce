@@ -1,0 +1,18 @@
+{
+  "name": "kontent-custom-element-tinymce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Gruntfile.js",
+  "dependencies": {
+    "@wiris/mathtype-tinymce4": "^7.26.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "npm install",
+    "basic": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orjanb-ne/kontent-custom-element-tinymce.git"
+  }
+}
