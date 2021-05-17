@@ -42,7 +42,7 @@
       function initializeEditor(initialValue, isDisabled, config = {}) {
         document.getElementById("editor").value = initialValue;
 
-        // Setup SimpleMDE
+        // Setup TinyMCE
         editor = tinymce.init({
           selector: "#editor",
           height: config.heightInPx,
@@ -74,19 +74,20 @@
       }
 
       function initCustomElement() {
-        try {
-          CustomElement.init((element, _context) => {
-            // Setup with initial value and disabled state
-            initializeEditor(element.value, element.disabled);
-          });
+          try {
+              CustomElement.init((element, _context) => {
+                  // Sets up editor with initial value, state (whether disabled) , and configuration options
+                  initializeEditor(element.value, element.disabled, element.config);
+                  updateSize();
+              });
 
-          // React on disabled changed (e.g. when publishing the item)
-          CustomElement.onDisabledChanged(updateDisabled);
-        } catch (err) {
-          // Initialization with Kentico Custom element API failed (page displayed outside of the Kentico UI)
-          console.error(err);
-          initializeEditor(err.toString());
-        }
+              // Reacts to changes in disabling (e.g., when publishing the item)
+              CustomElement.onDisabledChanged(updateDisabled);
+          } catch (err) {
+              // Sends message to console and editor if initialization failed (for example, the page is displayed outside the Kontent UI)
+              console.error(err);
+              initializeEditor(err.toString());
+          }
       }
 
       initCustomElement();
