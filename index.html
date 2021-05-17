@@ -66,6 +66,8 @@
         editor = tinymce.init({
           selector: "#editor",
           height: config.heightInPx,
+          plugins: config.plugins,
+          toolbar: config.toolbar,
           tinycomments_mode: "embedded",
           setup: function(editor) {
             // updates Kentico Cloud element value on certain actions
