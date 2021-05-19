@@ -63,7 +63,12 @@
             });
           }
         });
+        // Applying the specified format
+        tinymce.activeEditor.formatter.apply(config.custom_formats);
+        // Removing the specified format
+        tinymce.activeEditor.formatter.remove(config.remove_formats);
       }
+      
 
       function updateSize(height) {
         // Update the custom element height in the Kentico UI.
