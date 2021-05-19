@@ -60,13 +60,15 @@
             editor.on("init", function(args) {
               updateSize(editor.editorContainer.clientHeight);
               updateDisabled(isDisabled);
+              if (tinymce) {
+                // Applying the specified format
+                tinymce.activeEditor.formatter.apply(config.custom_formats);
+                // Removing the specified format
+                tinymce.activeEditor.formatter.remove(config.remove_formats);
+              }
             });
           }
         });
-        // Applying the specified format
-        tinymce.activeEditor.formatter.apply(config.custom_formats);
-        // Removing the specified format
-        tinymce.activeEditor.formatter.remove(config.remove_formats);
       }
       
 
