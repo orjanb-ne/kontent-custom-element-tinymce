@@ -1,100 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Tiny MCE Element</title>
-    <!-- Kontent Styling -->
-    <link rel="stylesheet" href="custom-element.css" />
-    <!-- REPLACE with your script below-->
-    <script src="https://cdn.tiny.cloud/1/qxp5p9506vxaxtgl98u78vla85slmh2thedvx2lj8yimuff2/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <!-- Kentico Custom elements API-->
-    <script src="https://app.kontent.ai/js-api/custom-element/v1/custom-element.min.js"></script>
 
-    <!-- Custom elements styles -->
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Custom element HTML -->
-    <textarea id="editor"></textarea>
+<head>
+  <meta charset="UTF-8" />
+  <title>Tiny MCE Element</title>
+  <!-- Kontent Styling -->
+  <link rel="stylesheet" href="custom-element.css" />
+  <!-- REPLACE with your script below-->
+  <script src="https://cdn.tiny.cloud/1/qxp5p9506vxaxtgl98u78vla85slmh2thedvx2lj8yimuff2/tinymce/5/tinymce.min.js"
+    referrerpolicy="origin"></script>
+  <!-- Kentico Custom elements API-->
+  <script src="https://app.kontent.ai/js-api/custom-element/v1/custom-element.min.js"></script>
 
-    <!-- Custom element code -->
-    <script type="text/javascript">
-      var isDisabled = false;
-      var editor = null;
+  <!-- Custom elements styles -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
 
-      function updateDisabled(disabled) {
-        if (tinymce) {
-          if (disabled) {
-            tinymce.activeEditor.setMode("readonly");
-          } else {
-            tinymce.activeEditor.setMode("design");
-          }
+    .mce-content-body.mce-visualblocks .encyclopedia-head:before {
+      content: "<head>";
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-head:after {
+      content: "</head>";
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-head:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-head:after {
+      background-color: #e5f7ff;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-word:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-word:after {
+      background-color: #feefe6;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:after {
+      background-color: #fff7e5;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:after {
+      background-color: #fceae8;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-numeral:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-numeral:after {
+      background-color: #eef7ed;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-etymology:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-etymology:after {
+      background-color: #f8f2ec;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-definition:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-definition:after {
+      background-color: #f0eef6;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-head:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-head:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-word:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-word:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-numeral:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-numeral:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-etymology:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-etymology:after,
+    .mce-content-body.mce-visualblocks .encyclopedia-definition:before,
+    .mce-content-body.mce-visualblocks .encyclopedia-definition:after {
+      padding: 0.2em;
+      font-size: 0.75em;
+      font-family: monospace;
+    }
+
+    .mce-content-body.mce-visualblocks .encyclopedia-head,
+    .mce-content-body.mce-visualblocks .encyclopedia-word,
+    .mce-content-body.mce-visualblocks .encyclopedia-phonetics,
+    .mce-content-body.mce-visualblocks .encyclopedia-lifespan,
+    .mce-content-body.mce-visualblocks .encyclopedia-numeral,
+    .mce-content-body.mce-visualblocks .encyclopedia-etymology,
+    .mce-content-body.mce-visualblocks .encyclopedia-definition {
+      border: 1px dashed #bbb;
+      padding: 0.2em;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Custom element HTML -->
+  <textarea id="editor"></textarea>
+
+  <!-- Custom element code -->
+  <script type="text/javascript">
+    var isDisabled = false;
+    var editor = null;
+
+    function updateDisabled(disabled) {
+      if (tinymce) {
+        if (disabled) {
+          tinymce.activeEditor.setMode("readonly");
+        } else {
+          tinymce.activeEditor.setMode("design");
         }
-        isDisabled = disabled;
       }
+      isDisabled = disabled;
+    }
 
-      function initializeEditor(initialValue, isDisabled, config = {}) {
-        document.getElementById("editor").value = initialValue;
+    function initializeEditor(initialValue, isDisabled, config = {}) {
+      document.getElementById("editor").value = initialValue;
 
-        // Setup TinyMCE
-        editor = tinymce.init({
-          selector: "#editor",
-          height: config.heightInPx,
-          plugins: config.plugins,
-          toolbar: config.toolbar,
-          menubar: config.menubar,
-          style_formats: config.style_formats,
-          external_plugins: config.external_plugins,
-          tinycomments_mode: "embedded",
-          setup: function(editor) {
-            // updates Kentico Cloud element value on certain actions
-            editor.on("Paste Change input Undo Redo", function() {
-              setValue(editor.getContent());
-            });
-            // update size & disabled mode once editor is loaded
-            editor.on("init", function(args) {
-              updateSize(editor.editorContainer.clientHeight);
-              updateDisabled(isDisabled);
-            });
-          }
+      // Setup TinyMCE
+      editor = tinymce.init({
+        selector: "#editor",
+        height: config.heightInPx,
+        plugins: config.plugins,
+        toolbar: config.toolbar,
+        menubar: config.menubar,
+        style_formats: config.style_formats,
+        external_plugins: config.external_plugins,
+        tinycomments_mode: "embedded",
+        setup: function (editor) {
+          // updates Kentico Cloud element value on certain actions
+          editor.on("Paste Change input Undo Redo", function () {
+            setValue(editor.getContent());
+          });
+          // update size & disabled mode once editor is loaded
+          editor.on("init", function (args) {
+            updateSize(editor.editorContainer.clientHeight);
+            updateDisabled(isDisabled);
+          });
+        }
+      });
+    }
+
+
+    function updateSize(height) {
+      // Update the custom element height in the Kentico UI.
+      CustomElement.setHeight(height);
+    }
+
+    function setValue(value) {
+      // Send updated value to Kentico (send null in case of the empty string => element will not meet required condition).
+      CustomElement.setValue(value || null);
+    }
+
+    function initCustomElement() {
+      try {
+        CustomElement.init((element, _context) => {
+          // Sets up editor with initial value, state (whether disabled) , and configuration options
+          initializeEditor(element.value, element.disabled, element.config);
+          updateSize();
         });
+
+        // Reacts to changes in disabling (e.g., when publishing the item)
+        CustomElement.onDisabledChanged(updateDisabled);
+      } catch (err) {
+        // Sends message to console and editor if initialization failed (for example, the page is displayed outside the Kontent UI)
+        console.error(err);
+        initializeEditor(err.toString());
       }
-      
+    }
 
-      function updateSize(height) {
-        // Update the custom element height in the Kentico UI.
-        CustomElement.setHeight(height);
-      }
+    initCustomElement();
+  </script>
+</body>
 
-      function setValue(value) {
-        // Send updated value to Kentico (send null in case of the empty string => element will not meet required condition).
-        CustomElement.setValue(value || null);
-      }
-
-      function initCustomElement() {
-          try {
-              CustomElement.init((element, _context) => {
-                  // Sets up editor with initial value, state (whether disabled) , and configuration options
-                  initializeEditor(element.value, element.disabled, element.config);
-                  updateSize();
-              });
-
-              // Reacts to changes in disabling (e.g., when publishing the item)
-              CustomElement.onDisabledChanged(updateDisabled);
-          } catch (err) {
-              // Sends message to console and editor if initialization failed (for example, the page is displayed outside the Kontent UI)
-              console.error(err);
-              initializeEditor(err.toString());
-          }
-      }
-
-      initCustomElement();
-    </script>
-  </body>
 </html>
