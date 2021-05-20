@@ -14,12 +14,12 @@
   content: "</word>";
 }
 
-.mce-content-body.mce-visualblocks .encyclopedia-defintion:before {
-  content: "<defintion>";
+.mce-content-body.mce-visualblocks .encyclopedia-definition:before {
+  content: "<definition>";
 }
 
-.mce-content-body.mce-visualblocks .encyclopedia-defintion:after {
-  content: "</defintion>";
+.mce-content-body.mce-visualblocks .encyclopedia-definition:after {
+  content: "</definition>";
 }
 
 .mce-content-body.mce-visualblocks .encyclopedia-phonetics:before {
