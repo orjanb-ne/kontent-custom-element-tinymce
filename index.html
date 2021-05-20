@@ -19,79 +19,6 @@
       padding: 0;
       overflow: hidden;
     }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-head:before {
-      content: "<head>";
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-head:after {
-      content: "</head>";
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-head:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-head:after {
-      background-color: #e5f7ff;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-word:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-word:after {
-      background-color: #feefe6;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:after {
-      background-color: #fff7e5;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:after {
-      background-color: #fceae8;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-numeral:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-numeral:after {
-      background-color: #eef7ed;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-etymology:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-etymology:after {
-      background-color: #f8f2ec;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-definition:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-definition:after {
-      background-color: #f0eef6;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-head:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-head:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-word:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-word:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-phonetics:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-lifespan:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-numeral:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-numeral:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-etymology:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-etymology:after,
-    .mce-content-body.mce-visualblocks .encyclopedia-definition:before,
-    .mce-content-body.mce-visualblocks .encyclopedia-definition:after {
-      padding: 0.2em;
-      font-size: 0.75em;
-      font-family: monospace;
-    }
-
-    .mce-content-body.mce-visualblocks .encyclopedia-head,
-    .mce-content-body.mce-visualblocks .encyclopedia-word,
-    .mce-content-body.mce-visualblocks .encyclopedia-phonetics,
-    .mce-content-body.mce-visualblocks .encyclopedia-lifespan,
-    .mce-content-body.mce-visualblocks .encyclopedia-numeral,
-    .mce-content-body.mce-visualblocks .encyclopedia-etymology,
-    .mce-content-body.mce-visualblocks .encyclopedia-definition {
-      border: 1px dashed #bbb;
-      padding: 0.2em;
-    }
   </style>
 </head>
 
@@ -127,6 +54,7 @@
         menubar: config.menubar,
         style_formats: config.style_formats,
         external_plugins: config.external_plugins,
+        content_css: config.content_css,
         tinycomments_mode: "embedded",
         setup: function (editor) {
           // updates Kentico Cloud element value on certain actions
