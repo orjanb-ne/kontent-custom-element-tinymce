@@ -145,6 +145,8 @@
 
     function updateSize(config = {}) {
       // Update the custom element height in the Kentico UI.
+      console.log(config.height)
+      console.log(parseInt(config.height))
       CustomElement.setHeight(parseInt(config.height));
     }
 
