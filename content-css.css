@@ -6,6 +6,54 @@
   content: "</head>";
 }
 
+.mce-content-body.mce-visualblocks .encyclopedia-word:before {
+  content: "<word>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-word:after {
+  content: "</word>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-defintion:before {
+  content: "<defintion>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-defintion:after {
+  content: "</defintion>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-phonetics:before {
+  content: "<phonetics>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-phonetics:after {
+  content: "</phonetics>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-lifespan:before {
+  content: "<lifespan>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-lifespan:after {
+  content: "</lifespan>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-etymology:before {
+  content: "<etymology>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-etymology:after {
+  content: "</etymology>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-numeral:before {
+  content: "<numeral>";
+}
+
+.mce-content-body.mce-visualblocks .encyclopedia-numeral:after {
+  content: "</numeral>";
+}
+
 .mce-content-body.mce-visualblocks .encyclopedia-head:before,
 .mce-content-body.mce-visualblocks .encyclopedia-head:after {
   background-color: #e5f7ff;
@@ -58,15 +106,4 @@
   padding: 0.2em;
   font-size: 0.75em;
   font-family: monospace;
-}
-
-.mce-content-body.mce-visualblocks .encyclopedia-head,
-.mce-content-body.mce-visualblocks .encyclopedia-word,
-.mce-content-body.mce-visualblocks .encyclopedia-phonetics,
-.mce-content-body.mce-visualblocks .encyclopedia-lifespan,
-.mce-content-body.mce-visualblocks .encyclopedia-numeral,
-.mce-content-body.mce-visualblocks .encyclopedia-etymology,
-.mce-content-body.mce-visualblocks .encyclopedia-definition {
-  border: 1px dashed #bbb;
-  padding: 0.2em;
 }
