@@ -135,7 +135,6 @@
           });
           // update size & disabled mode once editor is loaded
           editor.on("init", function (args) {
-            console.log('client height: ' + editor.editorContainer.clientHeight)
             updateSize(editor.editorContainer.clientHeight);
             updateDisabled(isDisabled);
           });
@@ -146,8 +145,6 @@
 
     function updateSize(height) {
       // Update the custom element height in the Kentico UI.
-      console.log(height)
-      console.log(parseInt(height))
       CustomElement.setHeight(parseInt(height));
     }
 
@@ -161,7 +158,6 @@
         CustomElement.init((element, _context) => {
           // Sets up editor with initial value, state (whether disabled) , and configuration options
           initializeEditor(element.value, element.disabled, element.config);
-          updateSize();
         });
 
         // Reacts to changes in disabling (e.g., when publishing the item)
